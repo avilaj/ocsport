@@ -48,3 +48,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+vendor/*
+bootstrap/*
+public/uploads/*
+public/packages/*

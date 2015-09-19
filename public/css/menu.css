@@ -1,0 +1,166 @@
+span.arrow {
+  border-color: #000 transparent;
+  border-style: solid;
+  border-width: 4px 4px 0 4px;
+  width: 0;
+  height: 0;
+  margin-left: 6px;
+  margin-top: 10px;
+  float: right;
+}
+
+span.arrow2 {
+  border-color: #666 transparent;
+  border-style: solid;
+  border-width: 6px 6px 0 6px;
+  width: 0;
+  height: 0;
+  margin-left: 6px;
+  margin-top: 10px;
+  float: right;
+}
+
+.menu {
+  margin:0;
+  padding:0;
+  list-style:none;
+  position: relative;
+  top: 68px;
+  text-align: center;
+}
+
+.menu li {
+	display: inline-block;
+	margin: auto;
+	text-align: center;
+	border-right-width: 1px;
+	border-right-style: inset;
+	border-right-color: #CCCCCC;
+}
+
+.menu li:last-child {
+    border-right-width: 0px;
+}
+
+
+.menu li a {
+  display:block;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  color: #333333;
+  padding: 2px 30px 2px 30px;
+  margin-left: -4px;
+}
+
+.menu li a:hover {
+	border-bottom-width: 4px;
+	border-bottom-style: solid;
+	border-bottom-color: #f36f21;
+}
+
+/* SUBMENU DESPLEGABLE */
+
+#submenu{
+	background-color: rgba(255,255,255,0.9);
+	width: 100%;
+	top: 140px;
+	position: fixed;
+	z-index: 99990;
+	display:none;
+}
+
+#submenu .content{
+	max-width: 1160px;
+	position: relative;
+	margin: auto;
+}
+
+#submenu .columna-big {
+	width: 75%;
+	float: left;
+	margin: 15px 0 30px 0;
+}
+
+#submenu .columna-small {
+	width: 25%;
+	float: left;
+	margin: 15px 0 30px 0;
+}
+
+#submenu .tit {
+	font-family: 'Oswald', sans-serif;
+	font-size: 14px;
+	color: #333333;
+	margin: 20px;
+	padding-bottom: 15px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #999999;
+}
+
+#submenu .columna-item {
+	width: 33.33%;
+	float: left;
+}
+
+#submenu .item {
+	margin: 10px 20px 10px 20px;
+}
+
+#submenu .item a {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 13px;
+	color: #333333;
+	display: block;
+}
+
+
+a:hover .arrow2 {
+
+  margin-right: 10px;
+    margin-top: 6px;
+    float: left;
+	width: 0; 
+	height: 0; 
+	border-top: 4px solid transparent;
+	border-bottom: 4px solid transparent;
+	border-left: 4px solid #333333;
+}
+
+a .arrow2  {
+      margin-right: 10px;
+    margin-top: 6px;
+    float: left;
+	width: 0; 
+	height: 0; 
+	border-top: 4px solid transparent;
+	border-bottom: 4px solid transparent;
+	border-left: 4px solid transparent;
+}
+
+#submenu .pic {
+	border: 1px solid #999999;
+	margin: 10px 20px 10px 20px;
+	line-height: 0px;
+	background: no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#submenu .name {
+	font-family: 'Oswald', sans-serif;
+	font-size: 18px;
+	line-height: 18px;
+	color: #333333;
+	margin: 0 20px;
+}
+
+#submenu .cat {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 13px;
+	color: #333333;
+	margin: 0 20px;
+}
