@@ -20,7 +20,8 @@ class GalleriesTableSeeder extends Seeder
 		DB::table('galleries')->insert([
 			'title' => 'Landpage banner',
 			'tag' => 'home_banner',
-			'description' => 'Banner gigante para el home.'
+			'description' => 'Banner gigante para el home.',
+			'images' => 'uploads/8d3233d5c087fcecc1ba56510690b09e.jpg,uploads/64aef93dd17093644ae1522afe1a9b5e.jpg,uploads/94f836a2d2459ed3b5daf06483005500.jpg,uploads/8291c1bd10e27c68fba0de6ee88bffa5.jpg'
 		]);
 	}
 }

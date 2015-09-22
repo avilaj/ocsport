@@ -14,7 +14,7 @@
 				
 				<!-- Favicons
 		================================================== -->
-				<link rel="shortcut icon" href="images/favicon.ico">
+				<link rel="shortcut icon" href="/images/favicon.ico">
 				
 				<!-- Mobile Specific Metas
 				================================================== -->
@@ -34,7 +34,7 @@
 				<link rel="stylesheet" type="text/css" href="{{URL::asset('owl-carousel/owl.carousel.css')}}">
 				<link rel="stylesheet" type="text/css" href="{{URL::asset('owl-carousel/owl.theme.css')}}">
 				<link rel="stylesheet" type="text/css" href="{{URL::asset('css/jquery.mmenu.all.css')}}">
-
+			@section('scripts')
 				<!-- JS
 				================================================== -->
 				<script type="text/javascript" src="{{URL::asset('javascripts/jquery.min.js')}}"></script>
@@ -45,7 +45,7 @@
 
 				<style>
 				#owl-demo .item{ background: #ffffff; padding: 0px 20px; margin-right: 1px; text-align: center;}
-		.owl-carousel .owl-wrapper-outer { background-color: #cccccc; box-shadow: 0px 0 0 2px #ffffff inset;}
+				.owl-carousel .owl-wrapper-outer { background-color: #cccccc; box-shadow: 0px 0 0 2px #ffffff inset;}
 				</style>
 
 			<script type="text/javascript">
@@ -109,6 +109,7 @@
 			});
 	</script>
 	
+	@show
 </head>
 
 <body>
@@ -132,13 +133,13 @@
 			</div>
 			
 			<div class="redes">
-				<a href="https://www.facebook.com/OCSPORTARG" target="_blank"><img src="images/ico-facebook.png"/></a>
-				<a href="https://twitter.com/OCSPORT_ARG" target="_blank"><img src="images/ico-twitter.png"/></a>
-				<a href="https://instagram.com/ocsportargentina/" target="_blank"><img src="images/ico-instagram.png"/></a>
+				<a href="https://www.facebook.com/OCSPORTARG" target="_blank"><img src="/images/ico-facebook.png"/></a>
+				<a href="https://twitter.com/OCSPORT_ARG" target="_blank"><img src="/images/ico-twitter.png"/></a>
+				<a href="https://instagram.com/ocsportargentina/" target="_blank"><img src="/images/ico-instagram.png"/></a>
 			</div>
 			
 			<div class="contact">
-				<a href="contacto.php">CONTACTO</a>
+				<a href="/contacto">CONTACTO</a>
 			</div>
 			
 		</div>
@@ -152,20 +153,21 @@
 		<div class="content">
 			
 			<div id="logo" class="close-menu">
-				<a href="index.php"><img src="images/ocsport-logo.png"/></a>
+				<a href="/"><img src="/images/ocsport-logo.png"/></a>
 			</div>
 			
 			<ul class="menu" id="menu">
-				<li><a class="open-menu" href="productos.php">PRODUCTOS<span class="arrow"></span></a></li>
-				<li><a class="close-menu" href="team.php">TEAM</a></li>
-				<li><a class="close-menu" href="news.php">NEWS</a></li>
-				<li><a class="close-menu" href="about.php">ABOUT</a></li>
-				<li><a class="close-menu" href="garantia.php">GARANTIA</a></li>
-				<li><a class="close-menu" href="stores.php">STORES</a></li>
+				<li><a class="open-menu" href="/catalogo">PRODUCTOS<span class="arrow"></span></a></li>
+				<li><a class="close-menu" href="/team">TEAM</a></li>
+				<li><a class="close-menu" href="/news">NEWS</a></li>
+				<li><a class="close-menu" href="/about">ABOUT</a></li>
+				<li><a class="close-menu" href="/garantia">GARANTIA</a></li>
+				<li><a class="close-menu" href="/stores">STORES</a></li>
 			</ul>
-			
 			<div id="search">
-				<input name="textfield" type="text" class="searchform" id="textfield" value="Search..."/>
+				<form action="{{ isset($categoria) ? $categoria->url : '/catalogo' }}">
+					<input name="s" type="text" class="searchform" id="textfield" placeholder="Buscar..."/>
+				</form>
 			</div>
 			
 		</div>
@@ -182,16 +184,16 @@
 				<div class="tit">NEW SEASON 2016</div>
 				@foreach ($categories as $category)
 				<div class="columna-item">
-					<div class="item"><a href="catalogo/{{$category->id}}">{{$category->name}}<span class="arrow2"></span></a></div>
+					<div class="item"><a href="{{$category->url}}">{{$category->name}}<span class="arrow2"></span></a></div>
 				</div>
 				@endforeach			
 			</div>
 			
 			<div class="columna-small">
-				<div class="tit">BEST SELLER</div>
+				<div class="tit">BEST SELLER {Falta hacer}</div>
 				
-				<div class="pic" style="background-image:url(images/bestseller.jpg)">
-					<a href="producto-mochila-oc-4004.php"><img src="images/marco3x2.png"/></a>	
+				<div class="pic" style="background-image:url(/images/bestseller.jpg)">
+					<a href="producto-mochila-oc-4004.php"><img src="/images/marco3x2.png"/></a>	
 				</div>
 				<div class="name">OC 4004 K</div>
 				<div class="cat">Mochila 20"</div>
@@ -216,9 +218,9 @@
 			<div class="columna-content">
 				
 				<h5 class="white">SOCIAL</h5>
-				<a href="https://www.facebook.com/OCSPORTARG" target="_blank"><img src="{{URL::asset('images/ico-facebook.png')}}"/></a>
-				<a href="https://twitter.com/OCSPORT_ARG" target="_blank"><img src="{{URL::asset('images/ico-twitter.png')}}"/></a>
-				<a href="https://instagram.com/ocsportargentina/" target="_blank"><img src="{{URL::asset('images/ico-instagram.png')}}"/></a>
+				<a href="https://www.facebook.com/OCSPORTARG" target="_blank"><img src="{{URL::asset('/images/ico-facebook.png')}}"/></a>
+				<a href="https://twitter.com/OCSPORT_ARG" target="_blank"><img src="{{URL::asset('/images/ico-twitter.png')}}"/></a>
+				<a href="https://instagram.com/ocsportargentina/" target="_blank"><img src="{{URL::asset('/images/ico-instagram.png')}}"/></a>
 
 			</div>
 		</div>
@@ -249,18 +251,18 @@
 				<h5 class="white">CONTENT</h5>
 				<div class="tree">
 					<div class="tree-left">
-						<a href="index.php" class="boton-tree">Home</a>
-						<a href="productos.php" class="boton-tree">Productos</a>
-						<a href="team.php" class="boton-tree">Team</a>
-						<a href="news.php" class="boton-tree">News</a>
+						<a href="/" class="boton-tree">Home</a>
+						<a href="/catalogo" class="boton-tree">Productos</a>
+						<a href="/team" class="boton-tree">Team</a>
+						<a href="/news" class="boton-tree">News</a>
 					</div>
 				</div>
 				<div class="tree">
 					<div class="tree-right">
-						<a href="about.php" class="boton-tree">About</a>
-						<a href="garantia.php" class="boton-tree">Garant&Iacute;a</a>
-						<a href="stores.php" class="boton-tree">Stores</a>
-						<a href="contacto.php" class="boton-tree">Contacto</a>
+						<a href="/about" class="boton-tree">About</a>
+						<a href="/garantia" class="boton-tree">Garant&Iacute;a</a>
+						<a href="/stores" class="boton-tree">Stores</a>
+						<a href="/contacto" class="boton-tree">Contacto</a>
 					</div>
 				</div>
 
@@ -273,7 +275,7 @@
 			<div class="columna-content">
 				
 				<div class="ventasmayoristas">
-					<a href="ventasmayoristas.php"><img src="{{URL::asset('images/ventasmayoristas.jpg')}}"/></a>
+					<a href="ventasmayoristas.php"><img src="{{URL::asset('/images/ventasmayoristas.jpg')}}"/></a>
 				</div>
 
 			</div>
@@ -291,7 +293,7 @@
 		<div class="content">
 			
 			<div id="logo-footer">
-				<img src="images/ocsport-logofooter.png"/>
+				<img src="/images/ocsport-logofooter.png"/>
 			</div>
 			<div class="copyright-info">
 				Copryright 2015 OC Sport - Todos los derechos reservados. Todos los logos, productos, marcas y nombres aqui utilizados son propiedad registrada. Design by: <a href="http://www.controlzstudios.com/" target="_blank">Control.Z studios</a>
@@ -308,21 +310,21 @@
 <!--START NAVIGATION RESPONSIVE-->
 <nav id="menu">
 	<ul>
-		<li><a href="index.php">HOME</a></li>
-		<li><a href="productos.php">PRODUCTOS</a>
+		<li><a href="/">HOME</a></li>
+		<li><a href="/catalogo">PRODUCTOS</a>
 			
 			<ul>
 				@foreach ($categories as $category)
-					<li><a href="catalogo/{{$category->id}}">{{$category->name}}</a></li>
+					<li><a href="{{$category->url}}">{{$category->name}}</a></li>
 				@endforeach
 			</ul>
 			
-			<li><a href="team.php">TEAM</a></li>
-			<li><a href="news.php">NEWS</a></li>
-			<li><a href="about.php">ABOUT</a></li>
-			<li><a href="garantia.php">GARANTIA</a></li>
-			<li><a href="stores.php">STORES</a></li>
-			<li><a href="contacto.php">CONTACTO</a></li>
+			<li><a href="/team">TEAM</a></li>
+			<li><a href="/news">NEWS</a></li>
+			<li><a href="/about">ABOUT</a></li>
+			<li><a href="/garantia">GARANTIA</a></li>
+			<li><a href="/stores">STORES</a></li>
+			<li><a href="/contacto">CONTACTO</a></li>
 		</ul>
 	</nav>
 	

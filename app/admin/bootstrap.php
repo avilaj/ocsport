@@ -10,5 +10,6 @@
  * 		FormItem::register('customElement', \Foo\Bar\MyCustomElement::class);
  *
  */
+// Column::register('imageColumn', ImageColumn::class);
 FormItem::register('textList', TextList::class);
 FormItem::register('galleryList', GalleryList::class);

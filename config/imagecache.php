@@ -16,7 +16,7 @@ return array(
     |
     */
    
-    'route' => null,
+    'route' => 'imagecache',
 
     /*
     |--------------------------------------------------------------------------
@@ -31,7 +31,7 @@ return array(
     */
     
     'paths' => array(
-        public_path('upload'),
+        public_path('uploads'),
         public_path('images')
     ),
 
@@ -52,9 +52,10 @@ return array(
     */
    
     'templates' => array(
-        'small' => 'Intervention\Image\Templates\Small',
-        'medium' => 'Intervention\Image\Templates\Medium',
-        'large' => 'Intervention\Image\Templates\Large',
+        'thumb' => 'App\Intervention\Small',
+        'small' => 'App\Intervention\Medium',
+        'medium' => 'App\Intervention\Medium',
+        'large' => 'App\Intervention\Large',
     ),
 
     /*

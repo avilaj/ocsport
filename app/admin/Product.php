@@ -4,31 +4,40 @@ Admin::model('App\Product')->title('Productos')->display(function ()
 {
 	$display = AdminDisplay::datatables();
 	$display->with('colors');
-	$display->filters([
+	// $display->filters([
 
-	]);
+	// ]);
 	$display->columns([
-		Column::image('thumbnail')->label('Thumbnail'),
-		Column::string('title')->label('Title'),
-		Column::lists('colors')->label('Colors'),
+		Column::image('thumbnail')->label('Miniatura'),
+		Column::string('title')->label('Título'),
+		Column::lists('colors.name')
 	]);
 	return $display;
 })->createAndEdit(function ()
 {
-	$form = AdminForm::form();
+	$form = AdminForm::tabbed();
 	$form->items([
-		FormItem::text('title', 'Title'),
-		FormItem::text('subtitle', 'Subtitle'),
-		FormItem::image('thumbnail', 'Thumbnail'),
-		FormItem::text('tags', 'Tags'),
-		FormItem::text('price', 'Price'),
-		FormItem::text('link', 'Link'),
-		FormItem::select('category_id', 'Category')->model('App\Category')->display('name'),
-		FormItem::select('product_id', 'Product Original')->model('App\Product')->display('title'),
-		FormItem::ckeditor('description', 'Description'),
-		FormItem::ckeditor('specs', 'Specs'),
-		FormItem::ckeditor('details', 'Details'),
-		FormItem::images('images', 'Images'),
+		'General' => [
+			FormItem::text('title', 'Título'),
+			FormItem::text('subtitle', 'Subtítulo'),
+			FormItem::multiselect('colors', 'Colores')->model('App\Color')->display('name'),
+			FormItem::select('category_id', 'Categoria')->model('App\Category')->display('name'),
+			// FormItem::select('product_id', 'Producto Original')->model('App\Product')->display('title'),
+			FormItem::text('tags', 'Serie'),
+		],
+		'Extra' => [
+			FormItem::ckeditor('description', 'Descripcion'),
+			FormItem::ckeditor('specs', 'Especificaciones'),
+			FormItem::ckeditor('details', 'Detalles'),
+		],
+		'Media' => [
+			FormItem::image('thumbnail', 'Miniatura'),
+			FormItem::images('images', 'Imagenes'),
+		],
+		'Venta' => [
+			FormItem::text('price', 'Precio'),
+			FormItem::text('link', 'Link a tienda nube'),
+		]
 	]);
 	return $form;
 });
