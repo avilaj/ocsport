@@ -40,7 +40,7 @@ class Category extends Model implements SluggableInterface
     }
     public function getUrlAttribute () {
         $slug = str_slug($this->name);
-        $url = "/catalogo/{$this->getSlug()}";
+        $url = "/productos/{$this->getSlug()}";
         return $url;
     }
     public function getBannerCleanedAttribute() {

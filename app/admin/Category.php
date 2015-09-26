@@ -18,9 +18,6 @@ Admin::model('App\Category')->title('Categorias')->display(function ()
 	$form->items([
 		FormItem::text('name', 'Nombre'),
 		FormItem::image('banner', 'Banner'),
-
-		FormItem::select('product_id', 'Best Seller')->model('App\Product')->display('title'),
-		FormItem::select('gallery_id', 'Galería')->model('App\Gallery')->display('title'),
 		FormItem::ckeditor('description', 'Descripcion'),
 	]);
 	return $form;

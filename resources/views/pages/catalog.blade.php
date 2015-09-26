@@ -1,9 +1,9 @@
 @extends('layout')
 @section('content')
 <div id="main">
-	@if($banner)
+	@if($categoria->banner)
 	<div id="top-banner">
-			<img src="/imagecache/original/{{$banner_cleaned}}">
+			<img src="/imagecache/original/{{$categoria->banner_cleaned}}">
 	</div>
 	@endif
 	<div id="productos">
@@ -28,14 +28,14 @@
 			<div class="columna-big">
 				<div class="columna-content2">
 					<div class="breadcrumb">
-						<a href="/catalogo">Catálogo</a>
+						<a href="/productos">Productos</a>
 						@if($categoria && $categoria->slug != "productos")
 						 / <a href="{{$categoria->url}}">{{$categoria->name}}</a>
 						@endif
 					</div>
 					<div class="categorias-nombre">
 						<h2 class="bold color">{{$categoria->name}}</h2>
-						<p>{{ $categoria->description }}</p>
+						<p>{!! $categoria->description !!}</p>
 					</div>
 
 

@@ -27,14 +27,17 @@ class Configuration extends Model
     public function scopeKey($query, $key) {
     	return $query->where('key', $key);
     }
+    public function getHomeSliderAttribute() {
+        return intval($this->attributes['home_slider']);
+    }
     public function setHomeOcteamAtrribute($string) {
     	$this->where('key', 'home_octeam')->update(['val'=>$string]);
     	return true;
     }
-    public function getOcteamAttribute() {
-    	$res = DB::table('configuration')->where('key', 'home_octeam')->first();
-    	return $this->where('key', 'home_octeam')->first();
-    }
+    // public function getOcteamAttribute() {
+    // 	$res = DB::table('configuration')->where('key', 'home_octeam')->first();
+    // 	return $this->where('key', 'home_octeam')->first();
+    // }
     public function save(array $options = [])
     {
         if ($this->fireModelEvent('saving') === false) {

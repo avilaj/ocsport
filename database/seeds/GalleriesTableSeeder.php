@@ -16,12 +16,16 @@ class GalleriesTableSeeder extends Seeder
 			'tag' => 'home_collection_banner',
 			'subtitle' => 'New Season 2016',
 			'description' => 'OC Sport presenta una nueva gama de mochilas, bolsos, equipaje y accesorios pensados para cargar dentro más de lo que tu estilo de vida necesita, con nuevos estilos, diseños funcionales, colores y estampados exclusivos.'
-		]);		
+		]);
 		DB::table('galleries')->insert([
 			'title' => 'Landpage banner',
 			'tag' => 'home_banner',
 			'description' => 'Banner gigante para el home.',
-			'images' => 'uploads/8d3233d5c087fcecc1ba56510690b09e.jpg,uploads/64aef93dd17093644ae1522afe1a9b5e.jpg,uploads/94f836a2d2459ed3b5daf06483005500.jpg,uploads/8291c1bd10e27c68fba0de6ee88bffa5.jpg'
+			'images' => 'uploads/banner_01.jpg,uploads/banner_02.jpg,uploads/banner_03.jpg,uploads/banner_04.jpg,uploads/banner_05.jpg'
+		]);
+		DB::table('galleries')->insert([
+			'title' => 'Rider Luchy',
+			'images' => 'uploads/rider_01.jpg,uploads/rider_02.jpg,uploads/rider_03.jpg'
 		]);
 	}
 }

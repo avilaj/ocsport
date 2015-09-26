@@ -38,7 +38,7 @@
 										<h3 class="light grey">{{$home_collection_banner->subtitle}}</h3>
 										<h2 class="bold color">{{$home_collection_banner->title}}</h2>
 										<p>{{$home_collection_banner->description}}</p>
-										<a href="/catalogo" class="botones boton-gris">VER COLECCION</a>
+										<a href="/productos" class="botones boton-gris">VER COLECCION</a>
 									</div>
 									<!-- Fin Temporada -->
 									

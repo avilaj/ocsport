@@ -21,7 +21,7 @@ $model->title('Configuración')
 	$form = AdminForm::tabbed();
 	$form->items([
 		'Home' => [
-			FormItem::image('home_banner')->label('Slider principal'),
+			FormItem::select('home_slider', 'Slider principal')->model('App\Gallery')->display('title'),
 			FormItem::columns()->columns([
 				[
 					FormItem::image('home_octeam')->label('team'),
@@ -31,7 +31,7 @@ $model->title('Configuración')
 					FormItem::image('home_ocstores')->label('stores')
 				]
 			]),
-			FormItem::image('home_octeam')->label('Banner del medio'),
+			FormItem::image('home_middle_banner')->label('Banner del medio'),
 
 		],
 		'Navegacion' => [

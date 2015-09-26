@@ -30,7 +30,47 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/catalogo/{categoria}/{producto}', function ($cid, $pid) {
+Route::get('/productos', function (Request $request) {
+    $category = App\Category::with('gallery')->where('slug','productos')->first();
+    $categories = App\Category::whereNotIn('id', [1])->get();
+
+    $productos = App\Product::with('colors');
+    $search = $request->input('s');
+    if (isset($search) && !empty($search)) {
+        $productos
+            ->where('title', 'like', "%{$search}%")
+            ->orWhere('subtitle', 'like', "%{$search}%");
+    }
+
+    $productos = $productos->paginate(6);
+    return view('pages.catalog', [
+        'categories' => $categories,
+        'categoria' => $category,
+        'productos' => $productos
+    ])->render();
+});
+
+Route::get('/productos/{categoria}', function (Request $request, $categoria) {
+    $category = App\Category::with('gallery')->where('slug',$categoria)->first();
+    $categories = App\Category::whereNotIn('id', [1])->get();
+
+    $productos = App\Product::with('colors', 'category')->where('category_id', $category->id);
+
+    $search = $request->input('s');
+    if (isset($search) && !empty($search)) {
+        $productos
+            ->where('title', 'like', "%{$search}%")
+            ->orWhere('subtitle', 'like', "%{$search}%");
+    }
+    $productos = $productos->paginate(6);
+    return view('pages.catalog', [
+        'categories' => $categories,
+        'categoria' => $category,
+        'productos' => $productos
+    ])->render();
+});
+
+Route::get('/productos/{categoria}/{producto}', function ($cid, $pid) {
     $categories = App\Category::whereNotIn('id', [1])->get();
     $producto = App\Product::with('colors', 'category')->where('slug',$pid)->first();
     if (empty($producto->tags)) {
@@ -68,45 +108,6 @@ Route::get('/catalogo/{categoria}/{producto}', function ($cid, $pid) {
         'series' => $series,
         'categories' => $categories,
     ]);
-});
-Route::get('/catalogo', function (Request $request) {
-    $category = App\Category::with('gallery')->where('slug','productos')->first();
-    $categories = App\Category::whereNotIn('id', [1])->get();
-
-    $productos = App\Product::with('colors');
-    $search = $request->input('s');
-    if (isset($search) && !empty($search)) {
-        $productos
-            ->where('title', 'like', "%{$search}%")
-            ->orWhere('subtitle', 'like', "%{$search}%");
-    }
-
-    $productos = $productos->paginate(6);
-    return view('pages.catalog', [
-        'categories' => $categories,
-        'categoria' => $category,
-        'productos' => $productos
-    ])->render();
-});
-
-Route::get('/catalogo/{categoria}', function (Request $request, $categoria) {
-    $category = App\Category::with('gallery')->where('slug',$categoria)->first();
-    $categories = App\Category::whereNotIn('id', [1])->get();
-
-    $productos = App\Product::with('colors', 'category')->where('category_id', $category->id);
-
-    $search = $request->input('s');
-    if (isset($search) && !empty($search)) {
-        $productos
-            ->where('title', 'like', "%{$search}%")
-            ->orWhere('subtitle', 'like', "%{$search}%");
-    }
-    $productos = $productos->paginate(6);
-    return view('pages.catalog', [
-        'categories' => $categories,
-        'categoria' => $category,
-        'productos' => $productos
-    ])->render();
 });
 
 Route::get('/team', function () {

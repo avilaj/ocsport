@@ -13,26 +13,36 @@ class ConfigurationTableSeeder extends Seeder
     {
         //
         DB::table('configuration')->insert([
-        	'key' => 'home_banner',
-        	'value' =>'queti'
+        	'key' => 'home_slider',
+        	'value' => '2'
         ]);
         DB::table('configuration')->insert([
         	'key' => 'home_octeam',
-        	'value' => 'jodete'
+        	'value' => 'uploads/team.jpg'
         ]);
         DB::table('configuration')->insert([
         	'key' => 'home_ocwarranty',
-        	'value' => 'jodete2'
+        	'value' => 'uploads/garantia.jpg'
 
         ]);
         DB::table('configuration')->insert([
         	'key' => 'home_ocstores',
-        	'value' => 'jodet3'
+        	'value' => 'uploads/stores.jpg'
+
+        ]);
+        DB::table('configuration')->insert([
+            'key' => 'home_middle_banner',
+            'value' => 'uploads/pic-big.jpg'
+
+        ]);
+        DB::table('configuration')->insert([
+            'key' => 'home_ocstores',
+            'value' => 'uploads/stores.jpg'
 
         ]);
         DB::table('configuration')->insert([
         	'key' => 'ventas_mayoristas',
-        	'value' => 'ventas mayoristas'
+        	'value' => 'uploads/ventasmayoristas.jpg'
 
         ]);
     }

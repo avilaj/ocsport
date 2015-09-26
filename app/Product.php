@@ -61,7 +61,7 @@ public function setSpecsAttribute($value) {
         return str_replace('uploads/', '', $this->thumbnail);
     }
     public function getUrlAttribute() {
-        $url = "/catalogo/{$this->category->slug}/{$this->slug}";
+        $url = "/productos/{$this->category->slug}/{$this->slug}";
         return $url;
     }
 

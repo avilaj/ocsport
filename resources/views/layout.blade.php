@@ -157,7 +157,7 @@
 			</div>
 			
 			<ul class="menu" id="menu">
-				<li><a class="open-menu" href="/catalogo">PRODUCTOS<span class="arrow"></span></a></li>
+				<li><a class="open-menu" href="/productos">PRODUCTOS<span class="arrow"></span></a></li>
 				<li><a class="close-menu" href="/team">TEAM</a></li>
 				<li><a class="close-menu" href="/news">NEWS</a></li>
 				<li><a class="close-menu" href="/about">ABOUT</a></li>
@@ -165,7 +165,7 @@
 				<li><a class="close-menu" href="/stores">STORES</a></li>
 			</ul>
 			<div id="search">
-				<form action="{{ isset($categoria) ? $categoria->url : '/catalogo' }}">
+				<form action="{{ isset($categoria) ? $categoria->url : '/productos' }}">
 					<input name="s" type="text" class="searchform" id="textfield" placeholder="Buscar..."/>
 				</form>
 			</div>
@@ -252,7 +252,7 @@
 				<div class="tree">
 					<div class="tree-left">
 						<a href="/" class="boton-tree">Home</a>
-						<a href="/catalogo" class="boton-tree">Productos</a>
+						<a href="/productos" class="boton-tree">Productos</a>
 						<a href="/team" class="boton-tree">Team</a>
 						<a href="/news" class="boton-tree">News</a>
 					</div>
@@ -311,7 +311,7 @@
 <nav id="menu">
 	<ul>
 		<li><a href="/">HOME</a></li>
-		<li><a href="/catalogo">PRODUCTOS</a>
+		<li><a href="/productos">PRODUCTOS</a>
 			
 			<ul>
 				@foreach ($categories as $category)
