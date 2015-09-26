@@ -27,7 +27,7 @@ Admin::model('App\Product')->title('Productos')->display(function ()
 		],
 		'Extra' => [
 			FormItem::ckeditor('description', 'Descripcion'),
-			FormItem::ckeditor('specs', 'Especificaciones'),
+			FormItem::jsonField('specs', 'Especificaciones'),
 			FormItem::ckeditor('details', 'Detalles'),
 		],
 		'Media' => [

@@ -62,7 +62,7 @@
 													</div>
 													<div class="mask">
 														<div class="mask-content">
-															<a href="{{$product->url}}" class="mask-icon"></a>
+															<a href="{{ $product->url }}" class="mask-icon"></a>
 														</div>
 													</div>
 												</div>

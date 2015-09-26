@@ -37,31 +37,6 @@ $(function ()
 			}
 		});
 
-		// flow.on('fileSuccess', function(file,message){
-		// 	flow.removeFile(file);
-
-		// 	$errors.html('');
-		// 	$group.removeClass('has-error');
-
-		// 	var result = $.parseJSON(message);
-
-		// 	$innerGroup.append('<div class="col-xs-6 col-md-3 imageThumbnail"><div class="thumbnail">' +
-		// 		'<img data-value="' + result.value + '" src="' + result.url + '" />' +
-		// 		'<a href="#" class="imageRemove">Remove</a></div></div>');
-		// 	updateValue();
-		// });
-		// flow.on('fileError', function(file, message){
-		// 	flow.removeFile(file);
-
-		// 	var response = $.parseJSON(message);
-		// 	var errors = '';
-		// 	$.each(response, function (index, error)
-		// 	{
-		// 		errors += '<p class="help-block">' + error + '</p>'
-		// 	});
-		// 	$errors.html(errors);
-		// 	$group.addClass('has-error');
-		// });
 		$item.on('click', '.videoRemove', function (e)
 		{
 			e.preventDefault();

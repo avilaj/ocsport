@@ -22,7 +22,7 @@ Route::get('/', function () {
 	$homeBanner = App\Gallery::tag('home_banner');
 	$homeCollectionBanner = App\Gallery::tag('home_collection_banner');
     return view('pages.home', [
-        'products' => App\Product::with('colors')->orderBy('created_at', 'desc')->take(3)->get(),
+        'products' => App\Product::with('colors','category')->orderBy('created_at', 'desc')->take(3)->get(),
         'news' => App\News::orderBy('created_at', 'desc')->take(2)->get(),
     	'categories' => $categories,
     	'home_banner' => $homeBanner,

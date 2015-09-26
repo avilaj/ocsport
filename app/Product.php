@@ -30,7 +30,14 @@ class Product extends Model implements SluggableInterface
     public function parent() {
     	return $this->belongsTo('App\Product');
     }
-	
+    // public function getSpecsAttribute($value)
+public function setSpecsAttribute($value) {
+        $cadena = json_encode($value);
+        $this->attributes['specs'] = $cadena;
+    }
+	public function getSpecsAttribute($value) {
+        return json_decode($value);
+    }
     public function getImagesAttribute($value)
 	{
         $images = preg_split('/,/', $value, -1, PREG_SPLIT_NO_EMPTY);

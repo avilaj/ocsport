@@ -96,7 +96,7 @@
 							<h4 class="light grey">{{ $producto->subtitle }}</h4>
 
 							<div class="descripcion">
-								{{$producto->description}}
+								{!! $producto->description !!}
 							</div>
 
 							<h5 class="light grey">COLORES</h5>
@@ -129,15 +129,18 @@
 							<h5 class="light grey">FICHA TECNICA</h5>
 
 							<div class="fichatecnica">
-								{{ $producto->specs }}
-								<div class="fichatecnica-cell semibold">Propiedad:</div>
-								<div class="fichatecnica-cell">Value</div>
+								@if($producto->specs)
+								@foreach($producto->specs as $spec)
+									<div class="fichatecnica-cell semibold">{{$spec->key}}</div>
+									<div class="fichatecnica-cell">{{$spec->val}}</div>
+								@endforeach
+								@endif
 							</div>
 
 							<h5 class="light grey">DETALLES</h5>
 
 							<div class="detalles">
-								<p class="small">{{ $producto->details }}</p>
+								<p class="small">{!! $producto->details !!}</p>
 							</div>
 
 						</div>

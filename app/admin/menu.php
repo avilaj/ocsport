@@ -9,3 +9,4 @@ Admin::menu()->label('Catálogo')->items(function (){
 Admin::menu('App\Galleries')->label('Galerias');
 Admin::menu('App\Person');
 Admin::menu('App\News');
+Admin::menu('App\Configurations')->label('Configuracion')->icon('fa-cog');

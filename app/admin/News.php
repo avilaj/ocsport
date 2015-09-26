@@ -18,11 +18,17 @@ Admin::model('App\News')->title('Noticias')->display(function ()
 {
 	$form = AdminForm::form();
 	$form->items([
-		FormItem::image('thumbnail', 'Thumbnail'),
-		FormItem::text('title', 'Title'),
-		FormItem::text('short_text', 'Shorttext'),
-		FormItem::select('gallery_id', 'Galería')->model('App\Gallery')->display('title'),
-		FormItem::ckeditor('text', 'Text'),
+		FormItem::columns()->columns([
+			[
+				FormItem::text('title', 'Title'),
+				FormItem::text('short_text', 'Shorttext'),
+				FormItem::select('gallery_id', 'Galería')->model('App\Gallery')->display('title'),
+				FormItem::ckeditor('text', 'Text'),
+			],
+			[
+				FormItem::image('thumbnail', 'Thumbnail'),
+			]
+		]),
 	]);
 	return $form;
 });

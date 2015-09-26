@@ -17,14 +17,20 @@ Admin::model('App\Person')->title('Team')->display(function ()
 {
 	$form = AdminForm::form();
 	$form->items([
-		FormItem::text('name', 'Name'),
-		FormItem::text('activity', 'Activity'),
-		FormItem::text('facebook', 'Facebook'),
-		FormItem::text('instagram', 'Instagram'),
-		FormItem::text('twitter', 'Twitter'),
-		FormItem::text('youtube', 'Youtube'),
-		FormItem::select('gallery_id', 'Galería')->model('App\Gallery')->display('title'),
-		FormItem::ckeditor('bio', 'Bio'),
+		FormItem::columns()->columns([
+			[
+				FormItem::text('name', 'Name'),
+				FormItem::text('activity', 'Activity'),
+				FormItem::select('gallery_id', 'Galería')->model('App\Gallery')->display('title'),
+				FormItem::ckeditor('bio', 'Bio'),
+			],
+			[
+				FormItem::text('facebook', 'Facebook'),
+				FormItem::text('instagram', 'Instagram'),
+				FormItem::text('twitter', 'Twitter'),
+				FormItem::text('youtube', 'Youtube'),
+			]
+		]),
 	]);
 	return $form;
 });

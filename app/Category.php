@@ -43,4 +43,10 @@ class Category extends Model implements SluggableInterface
         $url = "/catalogo/{$this->getSlug()}";
         return $url;
     }
+    public function getBannerCleanedAttribute() {
+        if ( $this->banner && !empty($this->banner) ) {
+            return str_replace('uploads/', '', $this->banner);
+        }
+        return null;
+    }
 }
