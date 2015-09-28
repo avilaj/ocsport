@@ -22,12 +22,12 @@
 
 		<!-- Google Font
 				================================================== -->
-				<link rel="stylesheet" type="text/css" href="{{URL::asset('http://fonts.googleapis.com/css?family=Oswald:400,700,300|Open+Sans:700,300,600,400')}}">
-				
+				<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300|Open+Sans:700,300,600,400')">
+        		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		
 				<!-- CSS
 				================================================== -->
-				<link rel="stylesheet" type="text/css" href="{{URL::asset('css/style.css')}}">
+				<link rel="stylesheet" type="text/css" href="{{URL::asset('css/style.css?1')}}">
 				<link rel="stylesheet" type="text/css" href="{{URL::asset('css/menu.css')}}">
 				<link rel="stylesheet" type="text/css" href="{{URL::asset('css/flexslider.css')}}">
 				<link rel="stylesheet" type="text/css" href="{{URL::asset('css/hover-effects.css')}}">
@@ -37,7 +37,6 @@
 			@section('scripts')
 				<!-- JS
 				================================================== -->
-				<script type="text/javascript" src="{{URL::asset('javascripts/jquery.min.js')}}"></script>
 				<script type="text/javascript" src="{{URL::asset('javascripts/jquery.mmenu.min.all.js')}}"></script>
 				<script type="text/javascript" src="{{URL::asset('javascripts/mmenu.js')}}"></script>
 				

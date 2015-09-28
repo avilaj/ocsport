@@ -15,19 +15,19 @@
 				<div class="table">
 					<div class="row">
 					@if ($destacadas)
-						@foreach ($destacadas as $destacada)
+						@foreach ($destacadas as $index => $destacada)
 							<!-- Inicio News Destacada-->
-							<div class="cell" id="news01-pic" style="background-image:url(/imagecache/medium/{{ $destacada->thumbnail_image }})">
+							<div class="cell" id="news0{{$index + 1}}-pic" style="background-image:url(/imagecache/medium/{{ $destacada->thumbnail_image }})">
 							</div>
 
-							<div class="cell"  id="news01-info">
+							<div class="cell"  id="news0{{$index + 1}}-info">
 								<div class="news-picmobile" style="background-image:url(/imagecache/medium/{{ $destacada->thumbnail_image }})">
 									<img src="images/marco3x2.png" alt="" />
 								</div>
 								<div class="news-content">
 									<h5 class="white">LATEST NEWS</h5>
 									<h3 class="white">{{ $destacada->title }}</h3>
-									<p class="color-dark">{{ $destacada->date }}</p>
+									<p class="date">{{ $destacada->date }}</p>
 									<p class="black">{{ $destacada->short_text }}</p>
 									<a href="{{ $destacada->url }}" class="botones boton-blanco">VER MAS</a>
 								</div>

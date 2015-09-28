@@ -10,6 +10,7 @@ Admin::menu('App\Galleries')->label('Galerias');
 Admin::menu('App\Person')->label('Riders');
 Admin::menu('App\News')->label('Noticias');
 Admin::menu('App\Subscription')->label('Suscripciones');
+Admin::menu('App\Models\Administrator')->label('Admins');
 // Admin::menu()->label('Páginas')->items(function () {
 // 	Admin::menu('App\PageHome')->label('Home');
 // 	Admin::menu('App\PageTeam')->label('Team');

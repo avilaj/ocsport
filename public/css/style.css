@@ -1357,3 +1357,62 @@ p.rta {
 }
 
 .categorias-nombre h2 { text-transform: uppercase;}
+
+.stores .rider-info a {
+    font-family: 'Open Sans', sans-serif;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 0px;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+    display: inline-block;
+    margin-right: 5px;
+	color: #666666;
+	border: 1px solid #666666;
+}
+
+#news01-info a {
+	border:1px solid white;
+	color: white;
+}
+#news01-info a:hover {
+	background: white;
+	color: #f36f21;
+	border:1px solid white;
+}
+#news01-info p {
+	color: black;
+}
+#news01-info h5,
+#news01-info h3 {
+ color: white;
+}
+#news01-info .date {
+	color: #993300;
+}
+
+
+#news02-info a {
+	border: 1px solid #f36f21;
+	color: #f36f21;
+}
+#news02-info a:hover {
+	background: #f36f21;
+	color: white;
+	border:1px solid #f36f21;
+}
+#news02-info p {
+	color: white;
+}
+#news02-info h5 {
+	color: white;
+}
+#news02-info h3 {
+	color: #f36f21;
+}
+#news02-info .date {
+	color: #666666;
+}

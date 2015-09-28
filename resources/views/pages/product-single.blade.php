@@ -58,10 +58,7 @@
 									<div class="zoom-small-content">
 										<div class="zoom-small-image">
 											<!-- @TODO: Imeplentar tamaños de imagenes  -->
-											<a 	href='/imagecache/large/{{ $producto->imagesCurated[0] }}'
-												class='cloud-zoom'
-												id='zoom1'
-												data-cloudzoom="zoomPosition: 'inside', autoInside: true, showTitle:false,adjustX:-4,adjustY:-4">
+											<a 	href='/imagecache/large/{{ $producto->imagesCurated[0] }}' class='cloud-zoom' id='zoom1' rel="position:'inside',showTitle:false,adjustX:-4,adjustY:-4">
 												<img 	src="/imagecache/medium/{{ $producto->imagesCurated[0] }}"
 														style="width:100%;"
 														title="Your caption here" alt=''/>
@@ -69,20 +66,14 @@
 										</div>
 									</div>
 									@foreach($producto->imagesCurated as $image)
-									<div class="tinylist"> 
-										<div 
-											class="tinylist-content"
-											style="background-image:url(/imagecache/medium/{{ $image }})"> 
-											<a  
-												href='/imagecache/large/{{ $image }}'
-												class='cloud-zoom-gallery'
-												rel="useZoom: 'zoom1', smallImage: '/imagecache/small/{{ $image }}' ">
-												<img 
-													class="zoom-tiny-image"
-													src="/images/marco1x1.png"/>
-											</a>
-										</div>
-									</div>
+                                        <!--list-->
+                                        <div class="tinylist"> 
+                                        <div class="tinylist-content" style="background-image:url(/imagecache/small/{{$image}})"> 
+                                        <a href='/imagecache/large/{{$image}}' class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: '/imagecache/medium/{{$image}}' ">
+                                        <img class="zoom-tiny-image" src="/images/marco1x1.png"/>
+                                        </a>
+                                        </div>
+                                        </div>
 									@endforeach
 								</div>
 							</div>
@@ -116,6 +107,7 @@
 							</div>
 
 							<div class="precio">
+
 								@if($producto->link)
 								<a href="{{ $producto->link }}" class="botoncomprar">SHOP ONLINE</a>
 								@endif
@@ -178,7 +170,7 @@
 								</div>
 								@if($producto->price)
 								<div class="precio">
-									<p class="large">$ {{ $producto->priCce }}</p>
+									<p class="large">$ {{ $producto->price }}</p>
 								</div>
 								@endif
 

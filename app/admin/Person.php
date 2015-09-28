@@ -10,7 +10,6 @@ Admin::model('App\Person')->title('Team')->display(function ()
 	$display->columns([
 		Column::string('name')->label('Name'),
 		Column::string('activity')->label('Activity'),
-		Column::string('gallery')->label('Gallery')->append(Column::filter('gallery_id')),
 	]);
 	return $display;
 })->createAndEdit(function ()
