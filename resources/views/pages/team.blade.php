@@ -11,9 +11,8 @@
         
             <!-- Inicio Banner -->
             <div id="top-banner">
-            	{banner hacer}
-                @if(isset($banner))
-                    <img src="/imagecache/original/{{$banner}}" />
+                @if(isset($configuration->team_banner))
+                    <img src="/imagecache/original/{{$configuration->image('team_banner')}}" />
                 @endif
             </div>
             <!-- Fin Banner -->

@@ -9,7 +9,6 @@ use Cviebrock\EloquentSluggable\SluggableTrait;
 class News extends Model implements SluggableInterface
 {
     use SluggableTrait;
-
     protected $sluggable = [
         'build_from' => 'title',
         'save_to'    => 'slug',
@@ -21,10 +20,14 @@ class News extends Model implements SluggableInterface
     	return $this->belongsTo('App\Gallery');
     }
 
-    public function getThumbnailCuratedAttribute() {
-        return str_replace('uploads/', '', $this->thumbnail);
+    public function getThumbnailImageAttribute() {
+        $image = empty($this->attributes['thumbnail']) ? '' : $this->attributes['thumbnail'];
+        return str_replace('uploads/', '', $image);
     }
-
+    public function getDateAttribute() {
+        setlocale(LC_TIME, 'es_ES.utf8');
+        return $this->created_at->formatLocalized('%B %d, %Y');
+    }
     public function getUrlAttribute() {
     	$slug = str_slug($this->title);
     	return "/news/{$this->slug}";

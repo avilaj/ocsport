@@ -1,5 +1,5 @@
 <?php
-
+setlocale(LC_TIME, 'es_ES.utf8');
 return [
 
     /*

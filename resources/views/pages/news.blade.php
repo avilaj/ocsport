@@ -1,7 +1,11 @@
 @extends('layout')
 @section('content')
 <div id="main">
-
+    <div id="top-banner">
+        @if(isset($configuration->news_banner))
+            <img src="/imagecache/original/{{$configuration->image('news_banner')}}" />
+        @endif
+    </div>
 	<!-- Inicio Latest-news -->
 	<div id="latest-news">
 		<div class="content">
@@ -13,11 +17,11 @@
 					@if ($destacadas)
 						@foreach ($destacadas as $destacada)
 							<!-- Inicio News Destacada-->
-							<div class="cell" id="news01-pic" style="background-image:url(/imagecache/medium/{{ $destacada->thumbnailCleaned }})">
+							<div class="cell" id="news01-pic" style="background-image:url(/imagecache/medium/{{ $destacada->thumbnail_image }})">
 							</div>
 
 							<div class="cell"  id="news01-info">
-								<div class="news-picmobile" style="background-image:url(/imagecache/medium/{{ $destacada->thumbnailCleaned }})">
+								<div class="news-picmobile" style="background-image:url(/imagecache/medium/{{ $destacada->thumbnail_image }})">
 									<img src="images/marco3x2.png" alt="" />
 								</div>
 								<div class="news-content">
@@ -32,7 +36,6 @@
 					@endif
 					</div>
 				</div>
-				{!! $news->render() !!}
 			</div>
 			<!-- Fin Contenedor News Destacada-->
 
@@ -52,7 +55,7 @@
 						<div class="news-cell">
 							<div class="news-cell-content">
 
-								<div class="news-pic" style="background-image:url(/imagecache/small/{{ $post->thumbnailCleaned }})">
+								<div class="news-pic" style="background-image:url(/imagecache/small/{{ $post->thumbnail_image }})">
 									<a href="{{ $post->url }}"><img src="images/marco3x2.png" alt="" /></a>
 								</div>
 
@@ -70,7 +73,7 @@
 			</div>
 			<!-- Fin Contenedor News-->
 
-
+			{!! $news->render() !!}
 		</div>
 	</div>
 	<!-- Fin News List -->

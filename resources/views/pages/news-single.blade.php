@@ -1,11 +1,27 @@
 @extends('layout')
 @section('scripts')
 @parent
-<!-- cloud-zoom -->
-<link href="{{ URL::asset('css/cloud-zoom.css') }}" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="{{ URL::asset('javascripts/cloud-zoom.1.0.2.min.js') }}"></script>
-<!-- AddThis -->          
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e7a99890df6b9b0" async="async"></script>
+       
+        <!-- Owl Carousel Assets
+        ================================================== -->
+		<script type="text/javascript" src="{{ URL::asset('owl-carousel/owl.carousel.js') }}"></script>
+        <script>
+        	$(document).ready(function() {
+        		$("#owl-demo").owlCarousel({
+        			autoPlay : false,
+        			navigation : true,
+        			navigationText : false,
+        			pagination : false,
+        			slideSpeed : 300,
+        			paginationSpeed : 400,
+        			singleItem : true,
+        			autoHeight : true,
+        			transitionStyle:"fade",
+      			});
+        	});
+        </script>
+        <!-- AddThis -->          
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e7a99890df6b9b0" async="async"></script>
 @endsection
 @section('content')
 <div id="main">
@@ -22,10 +38,14 @@
 					<div id="owl-demo" class="owl-carousel">
 					@if ($post->gallery)
 						@foreach($post->gallery->videos as $video)
-						{!! $video !!}
+							<div class="item">
+								{!! $video !!}
+							</div>
 						@endforeach
-						@foreach($post->gallery->imagesCurated as $image)
-						<img src="/imagethumb/medium/{{$image->src}}">
+						@foreach($post->gallery->images_curated as $image)
+							<div class="item">
+								<img src="/imagecache/medium/{{$image->src}}">
+							</div>
 						@endforeach
 					@endif
 

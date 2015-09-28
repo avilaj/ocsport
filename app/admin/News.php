@@ -10,8 +10,7 @@ Admin::model('App\News')->title('Noticias')->display(function ()
 	$display->columns([
 		Column::image('thumbnail'),
 		Column::string('title')->label('Title'),
-		Column::string('short_text')->label('Short_text'),
-		Column::string('gallery')->label('Gallery')->append(Column::filter('gallery_id')),
+		Column::string('short_text')->label('Short_text')
 	]);
 	return $display;
 })->createAndEdit(function ()
@@ -26,6 +25,7 @@ Admin::model('App\News')->title('Noticias')->display(function ()
 				FormItem::ckeditor('text', 'Text'),
 			],
 			[
+				FormItem::checkbox('pin', 'Destacada'),
 				FormItem::image('thumbnail', 'Thumbnail'),
 			]
 		]),

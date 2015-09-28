@@ -14,3 +14,6 @@
 FormItem::register('textList', TextList::class);
 FormItem::register('galleryList', GalleryList::class);
 FormItem::register('jsonField', JsonField::class);
+FormItem::register('color', ColorField::class);
+
+Column::register('color', ColorColumn::class);

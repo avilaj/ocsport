@@ -10,34 +10,32 @@ class Configuration extends Model
     //
     protected $table = 'configuration';
     protected $fillable = ['key', 'value', 'owner', 'type'];
+    protected $type = null;
     public function __construct() {
-    	$conf = DB::table('configuration')->get();
+    	if ($this->type != null) {
+            $conf = DB::table('configuration')->where('type', $this->type)->get();
+        } else {
+            $conf = DB::table('configuration')->get();
+        }
     	for ($i=0; $i < count($conf); $i++) { 
     		# code...
     		$item = $conf[$i];
     		$this->attributes[$item->key] = $item->value;
     	}
     }
-    public function find($id) {
-    	// return $this->attributes
+    public function cleanedImage ($attribute) {
+        if (! empty($attribute)) {
+            $attribute = str_replace('uploads/', '', $attribute);
+        }
+        return $attribute;
     }
-    public function scopeHome($query) {
-    	return $query->where('type', 'home_page');
-    }
+
+    public function find () {}
+
     public function scopeKey($query, $key) {
     	return $query->where('key', $key);
     }
-    public function getHomeSliderAttribute() {
-        return intval($this->attributes['home_slider']);
-    }
-    public function setHomeOcteamAtrribute($string) {
-    	$this->where('key', 'home_octeam')->update(['val'=>$string]);
-    	return true;
-    }
-    // public function getOcteamAttribute() {
-    // 	$res = DB::table('configuration')->where('key', 'home_octeam')->first();
-    // 	return $this->where('key', 'home_octeam')->first();
-    // }
+
     public function save(array $options = [])
     {
         if ($this->fireModelEvent('saving') === false) {
@@ -50,9 +48,37 @@ class Configuration extends Model
         		->update(['value' => $value]);
         }
     	return true;
-    	// throw new Exception(var_dump($this), 1);
     }
-    // public function __set($key, $val) {
-    // 	// $this->attributes[$key] = $val;
-    // }
+    public function image ($key) {
+        return $this->cleanedImage($this->attributes[$key]);
+    }
+    public function integer ($key) {
+        return intval($this->attributes[$key]);
+    }
+    public function getBestSellerAttribute() {
+        return intval($this->attributes['best_seller']);
+    }
+    public function getHomeSliderAttribute() {
+        return intval($this->attributes['home_slider']);
+    }
+
+    public function getHomeMiddleBannerImageAttribute () {
+        return $this->cleanedImage($this->attributes['home_middle_banner']);
+    }
+
+    public function getHomeOcteamImageAttribute () {
+        return $this->cleanedImage($this->attributes['home_octeam']);
+    }
+
+    public function getHomeOcwarrantyImageAttribute () {
+        return $this->cleanedImage($this->attributes['home_ocwarranty']);
+    }
+
+    public function getHomeOcstoresImageAttribute () {
+        return $this->cleanedImage($this->attributes['home_ocstores']);
+    }
+
+    public function getVentasMayoristasImageAttribute () {
+        return $this->cleanedImage($this->attributes['ventas_mayoristas']);
+    }
 }

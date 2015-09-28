@@ -131,8 +131,10 @@
 							<div class="fichatecnica">
 								@if($producto->specs)
 								@foreach($producto->specs as $spec)
+									@if (!empty($spec->key) && !empty($spec->val))
 									<div class="fichatecnica-cell semibold">{{$spec->key}}</div>
 									<div class="fichatecnica-cell">{{$spec->val}}</div>
+									@endif
 								@endforeach
 								@endif
 							</div>

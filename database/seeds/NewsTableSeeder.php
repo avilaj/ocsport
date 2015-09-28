@@ -25,5 +25,7 @@ class NewsTableSeeder extends Seeder
 			'text' => 'Mirá la entrevista live streaming con Bárbara Perez, instructora de snowboard y modelo del team Roxy Argentina, junto a Rama Quesada en los estudios de Surf & Rock Radio. Ver Entrevista',
 			'thumbnail' => 'uploads/rider_01.jpg'
 		]);
+		$news = factory(App\News::class, 30)->create();
+
     }
 }

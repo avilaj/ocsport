@@ -38,52 +38,8 @@
 				<!-- JS
 				================================================== -->
 				<script type="text/javascript" src="{{URL::asset('javascripts/jquery.min.js')}}"></script>
-				<script type="text/javascript" src="{{URL::asset('javascripts/jquery.flexslider.js')}}"></script>
-				<script type="text/javascript" src="{{URL::asset('owl-carousel/owl.carousel.js')}}"></script>
 				<script type="text/javascript" src="{{URL::asset('javascripts/jquery.mmenu.min.all.js')}}"></script>
 				<script type="text/javascript" src="{{URL::asset('javascripts/mmenu.js')}}"></script>
-
-				<style>
-				#owl-demo .item{ background: #ffffff; padding: 0px 20px; margin-right: 1px; text-align: center;}
-				.owl-carousel .owl-wrapper-outer { background-color: #cccccc; box-shadow: 0px 0 0 2px #ffffff inset;}
-				</style>
-
-			<script type="text/javascript">
-						$(function(){
-							// SyntaxHighlighter.all();
-						});
-						$(window).load(function(){
-							$('#bannershome').flexslider({
-								animation: "slide",
-								slideshow: true,
-								directionNav: true,
-								start: function(slider){
-									$('body').removeClass('loading');
-								}
-							});
-						});
-					</script>
-				
-				
-				<script>
-				$(document).ready(function() {
-						var owl = $("#owl-demo");
-						owl.owlCarousel({
-						navigationText : false,
-						itemsCustom : [
-						[0, 1],
-						[450, 1],
-						[600, 1],
-						[800, 1],
-						[1000, 3],
-						[1200, 3],
-						[1400, 3],
-						[1600, 3]
-						],
-						navigation : true
-					});
-				});
-				</script>
 				
 		<!-- Menu Desplegable
 		================================================== -->
@@ -232,10 +188,11 @@
 				
 				<h5 class="white">NEWSLETTER</h5>
 				<div class="formulario">
-					<form action="php/subscribe.php" method="post" name="contact" id="contact">      
-						<input class="form" id="nombre" type="text" name="nombre" placeholder="Nombre" onFocus="this.placeholder = ''" onBlur="this.placeholder = 'Nombre'" required="">
+					<form action="/subscribir" method="post" name="contact" id="contact">      
+						<input class="form" id="nombre" type="text" name="name" placeholder="Nombre" onFocus="this.placeholder = ''" onBlur="this.placeholder = 'Nombre'" required="">
 						<input class="form" id="email" type="text" name="email" placeholder="E-mail" onFocus="this.placeholder = ''" onBlur="this.placeholder = 'E-mail'" required="">
-						<input class="boton-form" id="enviar" type="submit" name="submit" value="SUBSCRIBE">  
+						<input class="boton-form" id="enviar" type="submit" name="submit" value="SUBSCRIBE">
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					</form>
 				</div>
 				
@@ -275,7 +232,7 @@
 			<div class="columna-content">
 				
 				<div class="ventasmayoristas">
-					<a href="ventasmayoristas.php"><img src="{{URL::asset('/images/ventasmayoristas.jpg')}}"/></a>
+					<a href="/ventasmayoristas"><img src="/imagecache/original/{{ $configuration->ventas_mayoristas_image}}"/></a>
 				</div>
 
 			</div>

@@ -11,20 +11,23 @@
 |
 */
 use Illuminate\Http\Request;
+$categories = App\Category::whereNotIn('id', [1])->get();
+View::share('categories', $categories);
+$configuracion = new App\Configuration;
+View::share('configuration', $configuracion);
 
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
 
-Route::get('/', function () {
-    $categories = App\Category::whereNotIn('id', [1])->get();
-	$homeBanner = App\Gallery::tag('home_banner');
+Route::get('/', function () use ($configuracion) {
+    setlocale(LC_TIME, 'es_ES.utf8');
+	$homeBanner = App\Gallery::find(intval($configuracion->home_slider));
 	$homeCollectionBanner = App\Gallery::tag('home_collection_banner');
     return view('pages.home', [
         'products' => App\Product::with('colors','category')->orderBy('created_at', 'desc')->take(3)->get(),
         'news' => App\News::orderBy('created_at', 'desc')->take(2)->get(),
-    	'categories' => $categories,
     	'home_banner' => $homeBanner,
     	'home_collection_banner' => $homeCollectionBanner
     ]);
@@ -32,7 +35,6 @@ Route::get('/', function () {
 
 Route::get('/productos', function (Request $request) {
     $category = App\Category::with('gallery')->where('slug','productos')->first();
-    $categories = App\Category::whereNotIn('id', [1])->get();
 
     $productos = App\Product::with('colors');
     $search = $request->input('s');
@@ -44,7 +46,6 @@ Route::get('/productos', function (Request $request) {
 
     $productos = $productos->paginate(6);
     return view('pages.catalog', [
-        'categories' => $categories,
         'categoria' => $category,
         'productos' => $productos
     ])->render();
@@ -52,7 +53,6 @@ Route::get('/productos', function (Request $request) {
 
 Route::get('/productos/{categoria}', function (Request $request, $categoria) {
     $category = App\Category::with('gallery')->where('slug',$categoria)->first();
-    $categories = App\Category::whereNotIn('id', [1])->get();
 
     $productos = App\Product::with('colors', 'category')->where('category_id', $category->id);
 
@@ -64,14 +64,12 @@ Route::get('/productos/{categoria}', function (Request $request, $categoria) {
     }
     $productos = $productos->paginate(6);
     return view('pages.catalog', [
-        'categories' => $categories,
         'categoria' => $category,
         'productos' => $productos
     ])->render();
 });
 
 Route::get('/productos/{categoria}/{producto}', function ($cid, $pid) {
-    $categories = App\Category::whereNotIn('id', [1])->get();
     $producto = App\Product::with('colors', 'category')->where('slug',$pid)->first();
     if (empty($producto->tags)) {
         $series = [$producto];
@@ -97,44 +95,78 @@ Route::get('/productos/{categoria}/{producto}', function ($cid, $pid) {
             ->whereNotIn('id', $ids)
             ->take(3 - count($relacionados))
             ->get();
-            foreach ($prodLast as $item) {
-                $ids[] = $item->id;
-                $relacionados[] = $item;
-            }
+
+        foreach ($prodLast as $item) {
+            $ids[] = $item->id;
+            $relacionados[] = $item;
+        }
     }
     return view('pages.product-single', [
         'producto' => $producto,
         'productos_relacionados' => $relacionados,
         'series' => $series,
-        'categories' => $categories,
     ]);
 });
 
 Route::get('/team', function () {
     $team = App\Person::with('gallery')->get();
-    $categories = App\Category::whereNotIn('id', [1])->get();
     return view('pages.team', [
         'team'=>$team,
-        'categories' => $categories
         ])->render();
+});
+
+Route::get('/garantia', function () {
+    return view('pages.garantia')->render();
+});
+
+Route::get('/about', function () {
+    return view('pages.about')->render();
+});
+
+Route::get('/stores', function () use ($configuracion) {
+    $slides = [];
+    if ($configuracion->stores_banner) {
+        $slides = App\Gallery::find($configuracion->stores_banner);
+    }
+    $stores = App\Gallery::where('tag','store_item')->get();
+    return view('pages.stores', compact('slides', 'stores'))->render();
+});
+
+Route::get('/contacto', function () {
+    return view('pages.contacto')->render();
+});
+
+Route::post('/contacto', function (Request $request) {
+    $input = Input::all();
+    Mail::send('emails.contacto', $input, function ($m) use ($input) {
+        $m->to('ventas@ocsport.com.ar')->subject('Consulta desde OC SPORT Website');
+    });
+    return redirect('/contacto/enviado')->with($input);
+});
+
+Route::get('/contacto/enviado', function () {
+    return view('pages.contacto-thanks')->render();
+});
+
+Route::post('/subscribir', function (Request $request) {
+    $datos = Input::all();
+    $item = App\Subscription::create($datos);
+    $item->save();
+    return view('pages.subscription-thanks', $datos);
 });
 
 Route::get('/news', function () {
     $destacadas = App\News::where('pin', true)->take(2)->get();
     $news = App\News::paginate(6);
-    $categories = App\Category::whereNotIn('id', [1])->get();
     return view('pages.news', [
         'destacadas' => $destacadas,
         'news'=>$news,
-        'categories' => $categories
         ])->render();
 });
 
 Route::get('/news/{slug}', function ($slug) {
     $post = App\News::with('gallery')->where('slug',$slug)->first();
-    $categories = App\Category::whereNotIn('id', [1])->get();
     return view('pages.news-single', [
         'post'=>$post,
-        'categories' => $categories
         ])->render();
 });

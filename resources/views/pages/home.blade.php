@@ -1,4 +1,43 @@
 @extends('layout')
+@section('scripts')
+	@parent
+	<script type="text/javascript" src="{{URL::asset('javascripts/jquery.flexslider.js')}}"></script>
+	<script type="text/javascript" src="{{URL::asset('owl-carousel/owl.carousel.js')}}"></script>
+	<style>
+		#owl-demo .item{ background: #ffffff; padding: 0px 20px; margin-right: 1px; text-align: center;}
+		.owl-carousel .owl-wrapper-outer { background-color: #cccccc; box-shadow: 0px 0 0 2px #ffffff inset;}
+	</style>
+
+	<script type="text/javascript">
+		$(window).load(function(){
+			$('#bannershome').flexslider({
+				animation: "slide",
+				slideshow: true,
+				directionNav: true,
+				start: function(slider){
+					$('body').removeClass('loading');
+				}
+			});
+		});
+		$(document).ready(function() {
+			var owl = $("#owl-demo");
+			owl.owlCarousel({
+				navigationText : false,
+				itemsCustom : [
+				[0, 1],
+				[450, 1],
+				[600, 1],
+				[800, 1],
+				[1000, 3],
+				[1200, 3],
+				[1400, 3],
+				[1600, 3]
+				],
+				navigation : true
+			});
+		});
+	</script>
+@endsection
 @section('content')
 				<!-- Inicio Main
 				================================================== -->
@@ -104,8 +143,8 @@
 							<div class="columna-33">
 								<div class="columna-content">
 									
-									<div class="pic" style="background-image:url(/images/team.jpg)">
-										<a href="team.php" class="destacado-hover">
+									<div class="pic" style="background-image:url(/imagecache/original/{{$configuration->home_octeam_image}})">
+										<a href="/team" class="destacado-hover">
 											<img src="/images/marco3x2.png" alt="" />
 											<div class="circle">
 												<div class="info-team">
@@ -124,8 +163,8 @@
 							<div class="columna-33">
 								<div class="columna-content">
 									
-									<div class="pic" style="background-image:url(/images/garantiab.jpg)">
-										<a href="garantia.php" class="destacado-hover">
+									<div class="pic" style="background-image:url(/imagecache/original/{{ $configuration->home_ocwarranty_image}})">
+										<a href="/garantia" class="destacado-hover">
 											<img src="/images/marco3x2.png" alt="" />
 											<div class="circle">
 												<div class="info-warranty">
@@ -144,7 +183,7 @@
 							<div class="columna-33">
 								<div class="columna-content">
 									
-									<div class="pic" style="background-image:url(/images/stores.jpg)">
+									<div class="pic" style="background-image:url(/imagecache/original/{{ $configuration->home_ocstores_image}})">
 										<a href="/stores" class="destacado-hover">
 											<img src="/images/marco3x2.png" alt="" />
 											<div class="circle">
@@ -166,7 +205,7 @@
 					
 					<!-- Inicio Home-banner -->
 					<div id="home-banner">
-						<img src="/images/pic-big.jpg"/>
+						<img src="/imagecache/original/{{ $configuration->home_middle_banner_image}}"/>
 					</div>
 					<!-- Fin Home-destacados -->
 					
@@ -181,17 +220,17 @@
 										
 										@foreach ($news as $key => $post)
 										<!-- Inicio News -->
-										<div class="cell" id="news0{{$key + 1}}-pic" style="background-image:url(/imagecache/medium/{{ $post->thumbnailCurated }})">
+										<div class="cell" id="news0{{$key + 1}}-pic" style="background-image:url(/imagecache/medium/{{ $post->thumbnail_image }})">
 										</div>
 										
 										<div class="cell"  id="news0{{$key + 1}}-info">
-											<div class="news-picmobile" style="background-image:url(/imagecache/small/{{ $post->thumbnailCurated }})">
+											<div class="news-picmobile" style="background-image:url(/imagecache/small/{{ $post->thumbnail_image }})">
 												<img src="images/marco3x2.png" alt="" />
 											</div>
 											<div class="news-content">
 												<h5>LATEST NEWS</h5>
 												<h3>{{ $post->title }}</h3>
-												<p class="date">{{ $post->created_at }}</p>
+												<p class="date">{{ $post->date }}</p>
 												<p class="text">{{ $post->short_text }}</p>
 												<a href="{{ $post->url }}" class="botones boton-mas">VER MAS</a>
 											</div>

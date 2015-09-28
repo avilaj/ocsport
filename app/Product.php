@@ -31,7 +31,7 @@ class Product extends Model implements SluggableInterface
     	return $this->belongsTo('App\Product');
     }
     // public function getSpecsAttribute($value)
-public function setSpecsAttribute($value) {
+    public function setSpecsAttribute($value) {
         $cadena = json_encode($value);
         $this->attributes['specs'] = $cadena;
     }

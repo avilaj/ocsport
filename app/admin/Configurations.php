@@ -1,5 +1,4 @@
 <?php
-
 $model = Admin::model('App\Configuration');
 $model->title('Configuración')
 ->display(function ()
@@ -13,11 +12,14 @@ $model->title('Configuración')
 		Column::string('key')->label('Opcion'),
 	]);
 	return $display;
-})->createAndEdit(function ($algo)
+})->createAndEdit(function ($algo) use ($model)
 {
+
 	if (!$algo) {
 		return null;
 	}
+	Session::flash('_redirectBack', $model->displayUrl());
+
 	$form = AdminForm::tabbed();
 	$form->items([
 		'Home' => [
@@ -35,10 +37,17 @@ $model->title('Configuración')
 
 		],
 		'Navegacion' => [
-			FormItem::select('nav_best_seller', 'Best Seller')->model('App\Product')->display('title')
+			FormItem::select('best_seller', 'Best Seller')->model('App\Product')->display('title')
 		],
 		'Footer' => [
 			FormItem::image('ventas_mayoristas')->label('Ventas Mayoristas')
+		],
+		'Banners de páginas' => [
+			FormItem::image('news_banner')->label('News'),
+			FormItem::image('team_banner')->label('Team'),
+			FormItem::image('warranty_banner')->label('Warranty'),
+			FormItem::image('about_banner')->label('About'),
+			FormItem::select('stores_banner', 'Slider de Stores')->model('App\Gallery')->display('title')->label('Galería de Stores'),
 		]
 	]);
 	return $form;

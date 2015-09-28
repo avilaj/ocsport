@@ -9,8 +9,8 @@ Admin::model('App\Color')->title('Colores')->display(function ()
 	]);
 	$display->columns([
 		Column::string('name')->label('Name'),
-		Column::string('hex')->label('Hex'),
-		Column::count('products')->label('Productos'),
+		Column::color('hex')->label('Hex')
+		// Column::count('products')->label('Productos'),
 	]);
 	return $display;
 })->createAndEdit(function ()
@@ -18,7 +18,7 @@ Admin::model('App\Color')->title('Colores')->display(function ()
 	$form = AdminForm::form();
 	$form->items([
 		FormItem::text('name', 'Name'),
-		FormItem::text('hex', 'Hex'),
+		FormItem::color('hex', 'Color'),
 	]);
 	return $form;
 });
